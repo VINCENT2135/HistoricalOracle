@@ -4,13 +4,11 @@ class UsersController < ApplicationController
     before_action :require_same_user, only: [:edit, :update, :destroy]
   
     def show
-   
-      @articles = @user.articles.paginate(page: params[:page], per_page: 3)
-
+      @articles = @user.articles.paginate(page: params[:page], per_page: 5)
     end
   
     def index
-      @users = User.paginate(page: params[:page], per_page: 3)
+      @users = User.paginate(page: params[:page], per_page: 5)
     end
   
     def new
@@ -22,25 +20,19 @@ class UsersController < ApplicationController
   
     def update
       if @user.update(user_params)
-        flash[:notice] = "User was updated OK"
-        #go to show, have to use _path
-        #redirect_to user_path(@user)
-        redirect_to user_path(@user) # or @user
-        #or can use the shortened path
-  
-        #redirect_to @article
+        flash[:notice] = "Your account information was successfully updated"
+        redirect_to @user
       else
-        render "edit"
+        render 'edit'
       end
     end
   
     def create
       @user = User.new(user_params)
       if @user.save
-        session[:user_id] = @user.id # logged in
-        flash[:notice] = "Welcome #{@user.username} to the Alpha Blog, you have successfully signed up"
-        # redirect_to user_path(@user_path) # or @user
-        redirect_to controller: "users", action: "show", id: @user.id
+        session[:user_id] = @user.id
+        flash[:notice] = "Welcome to the Alpha Blog #{@user.username}, you have successfully signed up"
+        redirect_to articles_path
       else
         render 'new'
       end
@@ -68,6 +60,5 @@ class UsersController < ApplicationController
         redirect_to @user
       end
     end
-
-end
-
+    
+  end
