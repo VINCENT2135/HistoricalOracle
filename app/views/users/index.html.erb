@@ -1,4 +1,42 @@
+<h1>Users Listing Page</h1>
 
+<div class="flickr_pagination">
+  <%= will_paginate @users, :container => false %>
+</div>
+
+<table>
+<thead>
+<tr>
+<th> User </th>
+<th> Article Count </th>
+<th> Email </th>
+<th> Joined </th>
+<th colspan = "2" > Actions </th>
+
+</tr>
+</thead>
+<tbody>
+<% @users.each do |user| %>
+<tr>
+<td><%= link_to user.username, user %></td>
+<td><%= pluralize(user.articles.count, "article") %></td>
+<td><%= user.email %></td>
+<td><%= time_ago_in_words(user.created_at) %></td>
+<td><%= link_to "Show", user %></td>
+              <% if logged_in? %>
+              <% if user == current_user %>
+               <td> <%= link_to "Edit profile", edit_user_path(user) %> </td>
+              <% end %>
+              <% if current_user.admin? %>
+                <td><%= link_to "Delete user", user_path(user), method: :delete,
+                                                                data: { confirm: "Are you sure you want to delete the user account and all associated articles?" } %> </td>
+              <% end %>
+            <% end %>
+</tr>
+<% end %>
+</tbody>
+
+</table>
 
 
 

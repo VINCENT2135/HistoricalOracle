@@ -1,0 +1,16 @@
+<h1>Showing User <%= @user.username %>'s Details</h1>
+
+<% if logged_in? && @user == current_user %>
+   <%= link_to "   Edit your profile", edit_user_path(@user) %>
+<% end %>
+<br>
+
+
+<h3>Showing Articles </h3>
+
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
+
+<%= render "articles/article" %>
