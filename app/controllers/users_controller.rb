@@ -31,11 +31,11 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-<<<<<<< HEAD
+
         flash[:notice] = "Welcome to Historical Oracle #{@user.username}!"
-=======
-        flash[:notice] = "Welcome to Historical Oracle #{@user.username}."
->>>>>>> fbc53659dd080e68230b793ed28eee11f2d0f343
+
+        
+
         redirect_to articles_path
       else
         render 'new'
