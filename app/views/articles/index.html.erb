@@ -1,16 +1,5 @@
 <h1> HistoricalOracle Listing Page</h1>
 
-<% if false %>
-<div class="flickr_pagination">
-  <%= will_paginate @articles, :container => false %>
-</div>
-<% end %>
 
-<%= render 'article' %>
-<div class="flickr_pagination">
-  <%= will_paginate @articles, :container => false %>
-</div>
-
-<br>
 
 <%= link_to 'Create New Article', new_article_path %>
