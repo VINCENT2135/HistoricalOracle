@@ -14,7 +14,7 @@
 <p>
   <%= f.label :category %><br>
   <%= f.collection_select(:category_ids, Category.all, :id, :name,
-     { prompt: "Make your selection from the list below (can be empty)"}, { multiple: true, size: 5 }) %>
+     { prompt: "Please choose from the list below "}, { multiple: true, size: 5 }) %>
 </p>
 
 <p>
