@@ -1,6 +1,7 @@
 <div class="topnav" id="myTopnav">
   <a href="#home" class="active"><%= link_to "Home", root_path %> </a>
   <a href="#users"> <%= link_to "Users", users_path %></a>
+  </div>
   
     <div class="dropdown-content">
       <% if logged_in? %>
@@ -8,16 +9,16 @@
       <% end %>    
       <a href="#"><%= link_to "View articles", articles_path %></a>
     </div>
-  </div>
+  
 
-    </button>
+
     <div class="dropdown-content">
       <% if logged_in?  && current_user.admin? %>
          <a href="#"><%= link_to "Create new category", new_category_path %></a>   
       <% end %>    
       <a href="#"><%= link_to "View categories", categories_path %></a>
     </div>
-  </div> 
+
    
   <% if logged_in? %>
       <a href="#login"> <%= link_to current_user.username, user_path(current_user) %></a>
@@ -28,14 +29,16 @@
          <%= link_to "Edit your profile", edit_user_path(current_user) %>
          <%= link_to "Delete your profile", user_path(current_user), method: :delete, data: { confirm: "Are you sure ?" } %>
       </div>
-     </div>
+     
+    
   
       <a href="#logout"> <%= link_to "Logout", logout_path, method: :delete %></a>
    <% else %>
       <a href="#login"><%= link_to "LogIn", login_path %></a> 
       <a href="#signup"><%= link_to "SignUp", signup_path %></a> 
    <% end %>
-</div>
+</div> 
+   </div>
 
 
  
