@@ -28,7 +28,7 @@
          <%= link_to "View your profile", user_path(current_user) %>
          <%= link_to "Edit your profile", edit_user_path(current_user) %>
          <%= link_to "Delete your profile", user_path(current_user), method: :delete, data: { confirm: "Are you sure ?" } %>
-      </div>
+      
      
     
   
@@ -37,9 +37,10 @@
       <a href="#login"><%= link_to "LogIn", login_path %></a> 
       <a href="#signup"><%= link_to "SignUp", signup_path %></a> 
    <% end %>
-</div> 
+
    </div>
 
+ 
 
  
 
