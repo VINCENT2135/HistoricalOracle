@@ -1,10 +1,7 @@
 <div class="topnav" id="myTopnav">
   <a href="#home" class="active"><%= link_to "Home", root_path %> </a>
   <a href="#users"> <%= link_to "Users", users_path %></a>
-  <div class="dropdown">
-    <button class="dropbtn">Articles 
-      <i class="fa fa-caret-down"></i>
-    </button>
+  <
     <div class="dropdown-content">
       <% if logged_in? %>
          <a href="#"><%= link_to "Create new article", new_article_path %></a>   
@@ -12,10 +9,8 @@
       <a href="#"><%= link_to "View articles", articles_path %></a>
     </div>
   </div>
-  <div class="dropdown">
-    <button class="dropbtn">Categories 
-      <i class="fa fa-caret-down"></i>
-    </button>
+
+    
     <div class="dropdown-content">
       <% if logged_in?  && current_user.admin? %>
          <a href="#"><%= link_to "Create new category", new_category_path %></a>   
@@ -26,11 +21,7 @@
    
   <% if logged_in? %>
       <a href="#login"> <%= link_to current_user.username, user_path(current_user) %></a>
- 
-     <div class="dropdown">
-        <button class="dropbtn"> <%= "Admin" if current_user.admin? %>  Profile [<%= current_user.username %>] 
-         <i class="fa fa-caret-down"></i>
-        </button>
+
        <div class="dropdown-content">
          <%= link_to "View your profile", user_path(current_user) %>
          <%= link_to "Edit your profile", edit_user_path(current_user) %>
