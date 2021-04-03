@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.1'
 gem 'will_paginate-bootstrap' 
