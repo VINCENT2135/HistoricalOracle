@@ -1,0 +1,42 @@
+<h1>Comments Listing Page</h1>
+
+<% if false %>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+<% end %>
+
+<p>
+  <h4> Article </h4> <%= @article.title %>&nbsp <%= @article.id %>
+</p>
+
+
+<table>
+<thead>
+<tr>
+<th> Comment </th>
+</tr>
+</thead>
+
+<tbody>
+ <% @comments.each do |comment| %>
+ <tr>
+     <td><%= comment.comment %></td>
+
+ </tr>
+	
+ <% end %>
+</tbody>
+
+</table>
+ 
+ <br>
+ 
+<%= link_to "Return to Article", article_path(@article) %> 
+ 
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
+<br>
+

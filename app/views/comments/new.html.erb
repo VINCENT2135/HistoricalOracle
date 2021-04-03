@@ -1,0 +1,24 @@
+<h1> Create A New Article Comment</h1>
+
+<%= render 'shared/errors', obj: @comment %>
+
+<%= form_with(model: @comment, url: [@article, @comment]) do |f| %>
+
+<p>
+  <h4> Article </h4> <%= @article.title %>&nbsp <%= @article.id %>
+</p>
+
+<p>
+  <%= f.label :comment %><br>
+  <%= f.text_field :comment %>
+</p>
+
+<p>
+ <%= f.submit %><br>
+ </p>
+
+  <br>
+ 
+<%= link_to "Return to Article", article_path(@article) %> 
+
+<% end %>
