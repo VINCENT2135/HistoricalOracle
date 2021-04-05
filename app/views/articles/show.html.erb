@@ -1,4 +1,4 @@
-<h1>Displaying  Article  Contents </h1>
+<h1>Showing Article Details</h1>
 
 <p><strong> Title: </strong><%= @article.title %></p>
 <p><strong> Description: </strong><%= @article.description %></p>
@@ -6,15 +6,47 @@
 
 <p>
           <% if @article.categories.any? %>
-            <div><%= render @article.categories %></div> 
+            <div><strong> Categories: </strong><%= render @article.categories %></div> 
+          <% end %>
+</p>
+<p>
+          <% if @article.comments.any? %>
+            <div><strong> Comments: </strong><%= link_to "View Comments", article_comments_path(@article) %></div> 
           <% end %>
 </p>
 
-<p>
-<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
-   <%= link_to "Edit", edit_article_path(@article) %> |
-   <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure ?" } %> |
-<% end %>
-<%= link_to "Return to Articles", articles_path %> 
-</p>
+<table>
 
+<tr>
+
+<td>
+
+<%= link_to "Add Comment", new_article_comment_path(@article) %> |
+
+</td>
+
+<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+
+<td>
+
+   <%= link_to "Edit", edit_article_path(@article) %>
+
+</td>
+
+<td>
+
+   <%= button_to "Delete", { action: "destroy", id: @article.id},  method: :delete, data: { confirm: "Are you sure?" } %>
+
+</td>
+
+<% end %>
+
+<td>
+
+<%= link_to "Return to Articles", articles_path %>
+
+</td>
+
+</tr>
+
+</table>

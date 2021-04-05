@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
+
+
+  
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
   end
@@ -55,7 +58,18 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+
+    if User.exists?(params[:id])
+
+          @user = User.find(params[:id])
+
+          else
+              
+   flash[:error] = "No such user " + params[:id]
+   redirect_to users_path
+
+      end 
+
   end
 
   def require_same_user
@@ -64,5 +78,6 @@ class UsersController < ApplicationController
       redirect_to @user
     end
   end
-  
 end
+ 
+

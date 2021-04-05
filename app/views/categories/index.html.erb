@@ -1,13 +1,16 @@
+<h1>Categories Listing Page</h1>
 
- <h1> HistoricalOracle Categoricals:</h1>
-
-
+<% if false %>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+<% end %>
 
  <table>
  <thead>
  <tr>
- <th></th>
-
+<th> Category </th>
+<th> Category Count </th>
  </tr>
  </thead>
  
@@ -15,7 +18,7 @@
   <% @categories.each do |category| %>
   <tr>
       <td><%= link_to category.name, category_path(category) %></td>
-      <td><%= pluralize(category.articles.count, "article") %></td>
+	 <td><%= pluralize(category.article_categories.category_article_count(category.id).count() , "article") %></td>
   </tr>
      
   <% end %>
@@ -24,8 +27,10 @@
  </table>
   
  
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
 
  <br>
  
  <%= link_to 'Create New Category', new_category_path %>
- 

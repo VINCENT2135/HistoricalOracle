@@ -40,6 +40,24 @@ class CategoriesController < ApplicationController
   
   private
 
+  def set_category
+
+    if Category.exists?(params[:id])
+
+                 @category = Category.find(params[:id])
+
+               else
+
+                 flash[:error] = "No such category " + params[:id]
+
+      redirect_to categories_path
+
+              end 
+
+  end
+
+  
+
   def category_params
     params.require(:category).permit(:name)
   end

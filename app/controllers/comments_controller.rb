@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new
     end
     
+    
     private
       
     def comment_params

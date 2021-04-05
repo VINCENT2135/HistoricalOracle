@@ -1,5 +1,7 @@
 <h1> Login </h1>
 
+<%= button_to "Log in with Google", '/auth/google_oauth2'  %>
+
 <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
 
 <p>
