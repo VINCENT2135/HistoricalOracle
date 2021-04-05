@@ -6,13 +6,20 @@ class CategoriesController < ApplicationController
   end
 
   def create
+         
     @category = Category.new(category_params)
-    if @category.save
-      flash[:notice] = "Category was successfully created"
-      redirect_to @category
-    else
-      render 'new'
-    end
+              
+          if @category.save
+        
+            flash[:notice] = "Category was successfully created"
+      
+            redirect_to @category
+      
+          else
+        
+            render 'new'
+        
+          end
   end
 
   def edit
@@ -20,13 +27,20 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    
     @category = Category.find(params[:id])
-    if @category.update(category_params)
-      flash[:notice] = "Category name updated successfully"
-      redirect_to @category
-    else
-      render 'edit'
-    end
+    
+      if @category.update(category_params)
+      
+          flash[:notice] = "Category name updated successfully"
+      
+          redirect_to @category
+      else
+      
+        render 'edit'
+    
+      end
+
   end
 
   def index
@@ -34,8 +48,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-     @category = Category.find(params[:id])
-	 @articles = @category.articles.paginate(page: params[:page], per_page: 3)
+     
+      @category = Category.find(params[:id])
+	 
+      @articles = @category.articles.paginate(page: params[:page], per_page: 3)
   end
   
   private

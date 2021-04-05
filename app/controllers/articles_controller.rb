@@ -4,64 +4,82 @@ class ArticlesController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def show
+  
   end
 
   def index
+    
     @articles = Article.paginate(page: params[:page], per_page: 3)
+  
   end
 
   def new
+    
     @article = Article.new
+  
   end
 
   def edit
+  
   end
 
   def create
-    #render plain: params[:article]
-    @article = Article.new(article_params)
-    @article.user = current_user
-    #render plain: @article.inspect
-    if @article.save
-      flash[:notice] = "Article was created OK"
-      #go to show, have to use _path
-      redirect_to article_path(@article)
-      #or can use the shortened path
-
-      #redirect_to @article
-    else
-      render "new"
-    end
-  end
+   
+      @article = Article.new(article_params)
+    
+         @article.user = current_user
+ 
+             if @article.save
+                  
+              flash[:notice] = "Article was created OK"
+     
+      
+              redirect_to article_path(@article)
+     
+                  else
+      
+            render "new"
+   
+          end
+       end
 
   def update
+      
     if @article.update(article_params)
-      flash[:notice] = "Article was updated OK"
-      #go to show, have to use _path
-      redirect_to article_path(@article)
-      #or can use the shortened path
-
-      #redirect_to @article
-    else
-      render "edit"
+      
+        flash[:notice] = "Article was updated OK"
+      
+            redirect_to article_path(@article)
+  
+              else
+      
+                render "edit"
+    
+          end
     end
-  end
 
   def destroy
   
-    @article.destroy
-    redirect_to articles_path
-  end
+     @article.destroy
+    
+        redirect_to articles_path
+     
+   end
 
   private
 
   def set_article
     if Article.exists?(params[:id])
-	  @article = Article.find(params[:id])
-	else
-	  flash[:error] = "No such article " + params[:id]
+	      
+        @article = Article.find(params[:id])
+	  
+      else
+	        
+        flash[:error] = "No such article " + params[:id]
+        
       redirect_to articles_path
- 	end
+ 	      
+    end
   end
 
   def article_params

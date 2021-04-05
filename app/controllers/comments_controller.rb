@@ -10,20 +10,27 @@ class CommentsController < ApplicationController
   
     def create  
      @comment = Comment.new(comment_params)
-     @comment.article = @article
-     if @comment.save
-        flash[:notice] = "Comment was successfully created"
-        redirect_to article_path(@article)
-      else
-        render 'new'
-      end	
+     
+            @comment.article = @article
+        
+            if @comment.save
+        
+                flash[:notice] = "Comment was successfully created"
+        
+                    redirect_to article_path(@article)
+      
+                else
+       
+                    render 'new'
+      
+                end	
     end
   
     def new
         @comment = Comment.new
     end
     
-    
+
     private
       
     def comment_params
@@ -32,12 +39,18 @@ class CommentsController < ApplicationController
     
     def set_article
      
-     if Article.exists?(params[:article_id])
-        @article = Article.find(params[:article_id])
+     
+        if Article.exists?(params[:article_id])
+        
+            @article = Article.find(params[:article_id])
       else
-        flash[:error] = "No such article " + params[:article_id]
-        redirect_to articles_path
+        
+                
+                    flash[:error] = "No such article " + params[:article_id]
+        
+                    redirect_to articles_path
        end
+    
     end
     
   end
