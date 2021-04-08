@@ -11,6 +11,8 @@ class User < ApplicationRecord
                           format: { with: VALID_EMAIL_REGEX }
         has_secure_password
 
+end
+
 
   def self.from_omniauth(response)
 
@@ -23,5 +25,4 @@ class User < ApplicationRecord
 
         end 
 
-end 
 
