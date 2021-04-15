@@ -16,7 +16,27 @@
   <%= f.collection_select(:category_ids, Category.all, :id, :name,
      { prompt: "Please choose from the list below "}, { multiple: true, size: 5 }) %>
 </p>
+ 
 
+<% if current_user.admin? %>
+
+<br>
+
+    <p>Or Create a New Category:</p>
+
+    <%= f.fields_for :categories, Category.new do |category_attributes|%>
+
+        <%= category_attributes.label :name, "Category Name:" %>
+
+        <%= category_attributes.text_field :name %>
+
+    <% end %> 
+
+<br>
+
+<% end %>
+
+<br>
 <p>
  <%= f.submit %><br>
  </p>

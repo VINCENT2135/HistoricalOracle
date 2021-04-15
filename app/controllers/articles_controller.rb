@@ -25,29 +25,30 @@ class ArticlesController < ApplicationController
 
   def create
    
+    if !article_params["categories_attributes"].nil? &&
+        article_params["categories_attributes"]["0"]["name"].empty?
+        params[:article].delete :categories_attributes
+    end
       @article = Article.new(article_params)
-    
          @article.user = current_user
- 
-             if @article.save
-                  
+          if @article.save
               flash[:notice] = "Article was created OK"
-     
-      
               redirect_to article_path(@article)
-     
-                  else
-      
+            else
             render "new"
-   
           end
        end
 
   def update
+    
+    if !article_params["categories_attributes"].nil? &&
+      article_params["categories_attributes"]["0"]["name"].empty?
+      params[:article].delete :categories_attributes
+    end
+  
+          if @article.update(article_params)
       
-    if @article.update(article_params)
-      
-        flash[:notice] = "Article was updated OK"
+           flash[:notice] = "Article was updated OK"
       
             redirect_to article_path(@article)
   
@@ -83,7 +84,8 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description, category_ids: [])
+
+    params.require(:article).permit(:title, :description, category_ids: [], categories_attributes: [:id, :name])
   end
 
   def require_same_user
