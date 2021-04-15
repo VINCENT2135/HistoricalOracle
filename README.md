@@ -11,7 +11,7 @@ $ bundle install
 
 Next, migrate the database:
 
-$ rake db:migrate
+$ rails db:migrate
 
 Then run the app in a local server:
 
