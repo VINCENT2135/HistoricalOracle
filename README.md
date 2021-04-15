@@ -1,7 +1,7 @@
 # HISTORICAL ORACLE READ-ME
 Project submission  for Phase 3 of Flatiron School. 
  
- HistoricalOracle is an encyclopedic resource site where users can view and post historical content categorized by what area of interest it is pertaining to.
+ HistoricalOracle is an encyclopedic resource site where users can view and post historical content categorized by the area of interest it pertains to.
  
  - Getting started
 
