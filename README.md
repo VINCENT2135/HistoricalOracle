@@ -1,10 +1,7 @@
 # HISTORICAL ORACLE READ-ME
+Project submission  for Phase 3 of Flatiron School. 
  
- 
- 
- This is my Rails portfolio project submission  for Phase 3 of Flatiron. 
- 
- HistoricalOracle is an encylopedic  site where users can view and post historical content categorized by what area of interest it is pertaining to.
+ HistoricalOracle is an encyclopedic resource site where users can view and post historical content categorized by what area of interest it is pertaining to.
  
  - Getting started
 
